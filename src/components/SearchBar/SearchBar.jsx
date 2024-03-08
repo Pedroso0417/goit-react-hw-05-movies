@@ -1,29 +1,30 @@
-import PropTypes from 'prop-types';
-import css from './Searchbar.module.css';
+// SearchBar.jsx
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import css from './SearchBar.module.css';
 
-const Searchbar = ({ onSubmit }) => {
+const SearchBar = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const history = useHistory();
+
+  const handleSearch = e => {
+    e.preventDefault();
+    // Redirect to the Movies page with the search query
+    history.push(`/movies?query=${encodeURIComponent(searchQuery)}`);
+  };
+
   return (
-    <header className={css.searchbar}>
-      <form className={css.form} onSubmit={onSubmit}>
-        <button type="submit" className={css.button}>
-          <span className={css.buttonLabel}>Search</span>
-        </button>
-
-        <input
-          className={css.input}
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search movies..."
-          name="search"
-        />
-      </form>
-    </header>
+    <form onSubmit={handleSearch}>
+      <input
+        className={css.input}
+        type="text"
+        placeholder="Search movies..."
+        value={searchQuery}
+        onChange={e => setSearchQuery(e.target.value)}
+      />
+      <button type="submit">Search</button>
+    </form>
   );
 };
 
-Searchbar.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
-
-export { Searchbar };
+export default SearchBar;
