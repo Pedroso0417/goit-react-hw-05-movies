@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import './footer.css';
+import css from './Footer.module.css';
 
 const Footer = () => {
   return (
@@ -9,8 +9,8 @@ const Footer = () => {
   );
 };
 
-Footer.propTypes ={
+Footer.propTypes = {
   Footer: PropTypes.string.isRequired,
-}
+};
 
 export default Footer;
