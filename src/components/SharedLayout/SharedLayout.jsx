@@ -10,7 +10,7 @@ const SharedLayout = ({ children }) => {
         <h1>Movie App</h1>
         <nav className={css.navigation}>
           <ul className={css.ul}>
-            <li className={css.home}>
+            <li className={css.home}>     
               <Link to="/">Home</Link>
             </li>
             <li className={css.movies}>
